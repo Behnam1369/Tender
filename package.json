@@ -1,0 +1,19 @@
+{
+  "name": "tender",
+  "version": "1.0.0",
+  "description": "SPII Tender ",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Behnam1369/Tender.git"
+  },
+  "author": "Behnam Aghaali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Behnam1369/Tender/issues"
+  },
+  "homepage": "https://github.com/Behnam1369/Tender#readme"
+}

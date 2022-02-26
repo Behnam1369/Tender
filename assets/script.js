@@ -4,7 +4,7 @@ if (urlParams.get('Key') != null) {
   key = urlParams.get('Key');
 }
 
-var host = 'http://172.16.166.32:40';
+var host = 'https://tenderapi.spii.co.com';
 
 $(document).ready(function () {
   getData();
