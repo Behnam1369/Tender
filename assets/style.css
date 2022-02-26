@@ -399,6 +399,7 @@ input[type='number'] {
 }
 
 .tender {
+  display: none;
   border: none;
   width: 80%;
   max-width: 980px;

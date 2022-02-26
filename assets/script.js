@@ -143,7 +143,6 @@ function placeTenderInfo() {
 }
 
 function loadProducts(arr) {
-  console.log(arr);
   if (arr == null) {
   } else if (arr.Tender[0].Closed == 1) {
   } else {
@@ -192,7 +191,8 @@ function loadProducts(arr) {
                     Quantity: 
                   </div>
                   <input type="number" style="border-color: rgb(5, 141, 73);" maxlength="6" min="0" max="50000"
-                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  onkeypress="if(event.charCode == 45) return false;">
                   <span>MT</span>
                 </div>` +
         (el.IdPublication == 999999
@@ -201,7 +201,8 @@ function loadProducts(arr) {
                     Price: 
                   </div>
                   <input type="number" style="border-color: rgb(5, 141, 73);" maxlength="7" min="0" max="50000"
-                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  onkeypress="if(event.charCode == 45) return false;">
                   <span>`+ arr.Tender[0].Cur + `</span>
                 </div>`
           : ``) +
@@ -216,7 +217,8 @@ function loadProducts(arr) {
                       <i class="fas fa-minus"></i>
                     </div>
                     <input type="number" style="border-color: #2ec304;" maxlength="4" min="0" max="99" 
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    onkeypress="if(event.charCode == 45) return false;">
                     <span style="color:#2ec304">%</span>
                   </div>
                 </div>`
@@ -232,7 +234,8 @@ function loadProducts(arr) {
                     <i class="fas fa-minus"></i>
                     </div>
                     <input type="number" style="border-color: #2ec304;" maxlength="5" min="0" max="99"
-                    oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                    oninput="javascript:if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    onkeypress="if(event.charCode == 45) return false;">
                     <span style="color:#2ec304">USD</span>
                   </div>
                 </div>`
@@ -282,7 +285,6 @@ $('.btnSubmit').click(function () {
             : null,
         });
       } else {
-        alert('Quantity is not determined.');
         emptyqty = 1;
       }
     }
@@ -293,9 +295,7 @@ $('.btnSubmit').click(function () {
   } else if (!$('i.acknowledge').hasClass('checked')) {
     alert('Please read and confirm the acknowledgement.');
   } else {
-    //console.log(JSON.stringify(vch));
-
-    $('.btnSubmit').prop('disabled', true);
+    $('.btnSubmit').prop('disabled', true).val('Submitting ...');
 
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -319,11 +319,11 @@ $('.btnSubmit').click(function () {
               '<h2>Your financial offer is successfully submitted. You will receive a copy of your submitted proposal on your mailbox. </h2>'
             )
             .show();
-          $('.btnSubmit').prop('disabled', false);
+          $('.btnSubmit').prop('disabled', false).val('Submit the bid');
         }
       })
       .catch((error) => {
-        $('.btnSubmit').prop('disabled', false);
+        $('.btnSubmit').prop('disabled', false).val('Submit the bid');
       });
   }
 });
